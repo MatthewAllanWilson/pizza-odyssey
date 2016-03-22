@@ -1,12 +1,11 @@
 
 //To generate the random number for each set.
 
-var timeArray = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'];
-
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//Creating a variable for each hour with the provided random number parameters.
 var eightAM = {
   pizzasSold: getRandomIntInclusive(0,4),
   deliveriesMade: getRandomIntInclusive(0,4),
@@ -115,99 +114,232 @@ var oneAM = {
   time: '1:00 AM'
 };
 
+//Sample code from Duncan
+
+// function addHourlySalesDataToLocation(storeLocation, pizzaSold, deliveryMade) {
+//   storeLocation.hourlyData.push( {
+//     time: time,
+//     pizzaSold: pizzaSold,
+//     deliveryMade: deliveryMade,
+//     driversNeeded: Math.ceil(deliveryMade / 3)
+//   } );
+// }
+
+//addHourlySalesDataToLocation(firstHill, '8:00am', getRandomIntInclusive(0,4));
+
+// var firstHill = {
+//   name: 'First Hill',
+//   hourlyData: [
+//     {
+//       time: '8:00am',
+//       pizzaSold: getRandomIntInclusive(0,4),
+//       deliveryMade: getRandomIntInclusive(0,4),
+//       //driversNeeded: Math.ceil()
+//     },
+//
+//   ]
+// };
 
 
+// var firstHillUL = document.getElementById('First-Hill');
+// var eightOClockLI;
+// for (var i = 0; i < firstHill.hourlyData.length; i++) {
+//   eightOClockLI = document.createElement('li');
+//   eightOClockLI.textContent = firstHillUL.hourlyData[0].time + ' pizzas sold: ' + firstHill.hourlyData[0].pizzaSold;
+//   firstHillUL.appendChild(eightOClockLI);
+// };
+
+//Creating the objects for each store.
 var ballard = {
   name: 'Ballard',
   storeData: [
-    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made.'],
-    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made.'],
-    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made.'],
-    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made.'],
-    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made.'],
-    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made.'],
-    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made.'],
-    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made.'],
-    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made.'],
-    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made.'],
-    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made.'],
-    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made.'],
-    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made.'],
-    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made.'],
-    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made.'],
-    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made.'],
-    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made.'],
-    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made.']
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
   ]
 };
 
-var pTagOne = document.getElementById('ballard-8am');
-pTagOne.textContent = ballard.storeData[0];
+var firstHill = {
+  name: 'First Hill',
+  storeData: [
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
+  ]
+};
 
-var pTagTwo = document.getElementById('ballard-9am');
-pTagTwo.textContent = ballard.storeData[1];
+var theInternationalDistrict = {
+  name: 'The International District',
+  storeData: [
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
+  ]
+};
 
-var pTagThree = document.getElementById('ballard-10am');
-pTagThree.textContent = ballard.storeData[2];
+var southLakeUnion = {
+  name: 'South Lake Union',
+  storeData: [
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
+  ]
+};
 
-var pTagFour = document.getElementById('ballard-11am');
-pTagFour.textContent = ballard.storeData[3];
+var georgetown = {
+  name: 'Georgetown',
+  storeData: [
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
+  ]
+};
 
-var pTagFive = document.getElementById('ballard-12pm');
-pTagFive.textContent = ballard.storeData[4];
+var ravena = {
+  name: 'Ravena',
+  storeData: [
+    [eightAM.time, eightAM.pizzasSold + ' pizzas sold', eightAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightAM.deliveriesMade / 3) + '.'],
+    [nineAM.time, nineAM.pizzasSold + ' pizzas sold', nineAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (nineAM.deliveriesMade / 3) + '.'],
+    [tenAM.time, tenAM.pizzasSold + ' pizzas sold', tenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenAM.deliveriesMade / 3) + '.'],
+    [elevenAM.time, elevenAM.pizzasSold + ' pizzas sold', elevenAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenAM.deliveriesMade / 3) + '.'],
+    [twelvePM.time, twelvePM.pizzasSold + ' pizzas sold', twelvePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelvePM.deliveriesMade / 3) + '.'],
+    [onePM.time, onePM.pizzasSold + ' pizzas sold', onePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (onePM.deliveriesMade / 3) + '.'],
+    [twoPM.time, twoPM.pizzasSold + ' pizzas sold', twoPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twoPM.deliveriesMade / 3) + '.'],
+    [threePM.time, threePM.pizzasSold + ' pizzas sold', threePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (threePM.deliveriesMade / 3) + '.'],
+    [fourPM.time, fourPM.pizzasSold + ' pizzas sold', fourPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fourPM.deliveriesMade / 3) + '.'],
+    [fivePM.time, fivePM.pizzasSold + ' pizzas sold', fivePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (fivePM.deliveriesMade / 3) + '.'],
+    [sixPM.time, sixPM.pizzasSold + ' pizzas sold', sixPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sixPM.deliveriesMade / 3) + '.'],
+    [sevenPM.time, sevenPM.pizzasSold + ' pizzas sold', sevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (sevenPM.deliveriesMade / 3) + '.'],
+    [eightPM.time, eightPM.pizzasSold + ' pizzas sold', eightPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (eightPM.deliveriesMade / 3) + '.'],
+    [ninePM.time, ninePM.pizzasSold + ' pizzas sold', ninePM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (ninePM.deliveriesMade / 3) + '.'],
+    [tenPM.time, tenPM.pizzasSold + ' pizzas sold', tenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (tenPM.deliveriesMade / 3) + '.'],
+    [elevenPM.time, elevenPM.pizzasSold + ' pizzas sold', elevenPM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (elevenPM.deliveriesMade / 3) + '.'],
+    [twelveAM.time, twelveAM.pizzasSold + ' pizzas sold', twelveAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (twelveAM.deliveriesMade / 3) + '.'],
+    [oneAM.time, oneAM.pizzasSold + ' pizzas sold', oneAM.deliveriesMade + ' deliveries made. Recommended number of drivers is ' + (oneAM.deliveriesMade / 3) + '.']
+  ]
+};
 
-var pTagSix = document.getElementById('ballard-1pm');
-pTagSix.textContent = ballard.storeData[5];
+//Creating the tags to list on the webpage.
 
-var pTagSeven = document.getElementById('ballard-2pm');
-pTagSeven.textContent = ballard.storeData[6];
+var ballardUL = document.getElementById(ballard.name);
+var ballardLI;
+for (var i = 0; i < ballard.storeData.length; i++) {
+  ballardLI = document.createElement('li');
+  ballardLI.textContent = ballard.storeData[i];
+  ballardUL.appendChild(ballardLI);
+};
 
-var pTagEight = document.getElementById('ballard-3pm');
-pTagEight.textContent = ballard.storeData[7];
+var firstHillUL = document.getElementById(firstHill.name);
+var firstHillLI;
+for (var i = 0; i < firstHill.storeData.length; i++) {
+  firstHillLI = document.createElement('li');
+  firstHillLI.textContent = firstHill.storeData[i];
+  firstHillUL.appendChild(firstHillLI);
+};
 
-var pTagNine = document.getElementById('ballard-4pm');
-pTagNine.textContent = ballard.storeData[8];
+var theInternationalDistrictUL = document.getElementById(theInternationalDistrict.name);
+var theInternationalDistrictLI;
+for (var i = 0; i < theInternationalDistrict.storeData.length; i++) {
+  theInternationalDistrictLI = document.createElement('li');
+  theInternationalDistrictLI.textContent = theInternationalDistrict.storeData[i];
+  theInternationalDistrictUL.appendChild(theInternationalDistrictLI);
+};
 
-var pTagTen = document.getElementById('ballard-5pm');
-pTagTen.textContent = ballard.storeData[9];
+var southLakeUnionUL = document.getElementById(southLakeUnion.name);
+var southLakeUnionLI;
+for (var i = 0; i < southLakeUnion.storeData.length; i++) {
+  southLakeUnionLI = document.createElement('li');
+  southLakeUnionLI.textContent = southLakeUnion.storeData[i];
+  southLakeUnionUL.appendChild(southLakeUnionLI);
+};
 
-var pTagEleven = document.getElementById('ballard-6pm');
-pTagEleven.textContent = ballard.storeData[10];
+var georgetownUL = document.getElementById(georgetown.name);
+var georgetownLI;
+for (var i = 0; i < georgetown.storeData.length; i++) {
+  georgetownLI = document.createElement('li');
+  georgetownLI.textContent = georgetown.storeData[i];
+  georgetownUL.appendChild(georgetownLI);
+};
 
-var pTagTwelve = document.getElementById('ballard-7pm');
-pTagTwelve.textContent = ballard.storeData[11];
-
-var pTagThirteen = document.getElementById('ballard-8pm');
-pTagThirteen.textContent = ballard.storeData[12];
-
-var pTagFourteen = document.getElementById('ballard-9pm');
-pTagFourteen.textContent = ballard.storeData[13];
-
-var pTagFifteen = document.getElementById('ballard-10pm');
-pTagFifteen.textContent = ballard.storeData[14];
-
-var pTagSixteen = document.getElementById('ballard-11pm');
-pTagSixteen.textContent = ballard.storeData[15];
-
-var pTagSeventeen = document.getElementById('ballard-12am');
-pTagSeventeen.textContent = ballard.storeData[16];
-
-var pTagEighteen = document.getElementById('ballard-1am');
-pTagEighteen.textContent = ballard.storeData[17];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//var pizzasPerHour = [];
-//var deliveriesPerHour = [];
-//var hoursArray = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'];
+var ravenaUL = document.getElementById(ravena.name);
+var ravenaLI;
+for (var i = 0; i < ravena.storeData.length; i++) {
+  ravenaLI = document.createElement('li');
+  ravenaLI.textContent = ravena.storeData[i];
+  ravenaUL.appendChild(ravenaLI);
+};
