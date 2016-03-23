@@ -99,6 +99,50 @@ southLakeUnion.pushHourlyData(new HourlyData('8:00 PM', 22, 36, 5, 22));
 southLakeUnion.pushHourlyData(new HourlyData('9:00 PM', 22, 36, 5, 22));
 southLakeUnion.pushHourlyData(new HourlyData('10:00 PM', 22, 36, 5, 22));
 southLakeUnion.pushHourlyData(new HourlyData('11:00 PM', 5, 21, 16, 31));
+southLakeUnion.pushHourlyData(new HourlyData('12:00 AM', 5, 21, 16, 31));
+southLakeUnion.pushHourlyData(new HourlyData('1:00 AM', 5, 21, 16, 31));
+
+var georgetown =  new PizzaLocation('Georgetown');
+georgetown.pushHourlyData(new HourlyData('8:00 AM', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('9:00 AM', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('10:00 AM', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('11:00 AM', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('12:00 PM', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('1:00 PM', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('2:00 PM', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('3:00 PM', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('4:00 PM', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('5:00 PM', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('6:00 PM', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('7:00 PM', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('8:00 PM', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('9:00 PM', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('10:00 PM', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('11:00 PM', 15, 20, 6, 21));
+georgetown.pushHourlyData(new HourlyData('12:00 AM', 15, 20, 6, 21));
+georgetown.pushHourlyData(new HourlyData('1:00 AM', 15, 20, 6, 21));
+
+var ravenna =  new PizzaLocation('Ravenna');
+ravenna.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('11:00 AM', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('12:00 PM', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('1:00 PM', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('2:00 PM', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('3:00 PM', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('4:00 PM', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('5:00 PM', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('6:00 PM', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('7:00 PM', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('8:00 PM', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('9:00 PM', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('10:00 PM', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('11:00 PM', 2, 4, 3, 11));
+ravenna.pushHourlyData(new HourlyData('12:00 AM', 2, 4, 3, 11));
+ravenna.pushHourlyData(new HourlyData('1:00 AM', 2, 4, 3, 11));
+
+
 
 
 function genorateDataRow(inputArray){
@@ -124,10 +168,11 @@ function genorateHeadingRow(inputArray){
   return row;
 }
 
-
+//var header = document.createElement('p');
 var tagTable = document.createElement('table');
 
 function createTable (name) {
+  //header = name;
 // create a row with th tags
 var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
 var secondRow = genorateDataRow([name.hourlyData[0].time, name.hourlyData[0].pizzasSold, name.hourlyData[0].deliveriesMade]);
@@ -148,7 +193,6 @@ var sixteenthRow = genorateDataRow([name.hourlyData[14].time, name.hourlyData[14
 var seventeenthRow = genorateDataRow([name.hourlyData[15].time, name.hourlyData[15].pizzasSold, name.hourlyData[15].deliveriesMade]);
 var eighteenthRow = genorateDataRow([name.hourlyData[16].time, name.hourlyData[16].pizzasSold, name.hourlyData[16].deliveriesMade]);
 var ninteenthRow = genorateDataRow([name.hourlyData[17].time, name.hourlyData[17].pizzasSold, name.hourlyData[17].deliveriesMade]);
-
 
 tagTable.appendChild(firstRow);
 tagTable.appendChild(secondRow);
@@ -182,18 +226,7 @@ createTable(theInternationalDistrict);
 document.getElementById('theInternationalDistrict').appendChild(tagTable);
 createTable(southLakeUnion);
 document.getElementById('southLakeUnion').appendChild(tagTable);
-
-// var firstHillTable = document.createElement('table');
-//
-// // create a row with th tags
-// var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
-// var secondRow = genorateDataRow([firstHill.hourlyData[0].time, firstHill.hourlyData[0].pizzasSold, firstHill.hourlyData[0].deliveriesMade]);
-// var thirdRow = genorateDataRow([firstHill.hourlyData[1].time, firstHill.hourlyData[1].pizzasSold, firstHill.hourlyData[1].deliveriesMade]);
-// var fourthRow = genorateDataRow([firstHill.hourlyData[2].time, firstHill.hourlyData[2].pizzasSold, firstHill.hourlyData[2].deliveriesMade]);
-//
-// firstHillTable.appendChild(firstRow);
-// firstHillTable.appendChild(secondRow);
-// firstHillTable.appendChild(thirdRow);
-// firstHillTable.appendChild(fourthRow);
-//
-// document.getElementById('first-hill').appendChild(firstHillTable);
+createTable(georgetown);
+document.getElementById('georgetown').appendChild(tagTable);
+createTable(ravenna);
+document.getElementById('ravenna').appendChild(tagTable);
