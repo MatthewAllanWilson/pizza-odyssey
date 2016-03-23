@@ -1,18 +1,18 @@
-// define function for use later
+// Random math function to generate the random numbers.
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//Creating an object constructor which is marked by the first letter being capititalized (PizzaLocation instead of pizzaLocation).
 function PizzaLocation(name){
-  // we create properties with the object constructor using this.name = "what ever you want"
   this.name = name;
   this.hourlyData = [];
 }
 
-// we add methods to a object constuctor by adding functions to its prototype
+//This and the HourlyData object constructor work together to push data into an array that will eventually populate for each location.
 PizzaLocation.prototype.pushHourlyData = function(data){
   this.hourlyData.push(data);
-}
+};
 
 function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDeliveriesMade){
   this.time = time;
@@ -21,7 +21,7 @@ function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDe
   this.driversNeeded = Math.ceil(this.deliveriesMade / 3);
 }
 
-// when we create a new object from this consturctor we have to use the 'new' keyword
+// Making a new PizzaLocation for each store.  Passing in the min/max values from the chart provided in the instructions.
 var ballard = new PizzaLocation('Ballard');
 ballard.pushHourlyData(new HourlyData('8:00 AM', 0, 3, 1, 7));
 ballard.pushHourlyData(new HourlyData('9:00 AM', 0, 3, 1, 7));
@@ -62,7 +62,7 @@ firstHill.pushHourlyData(new HourlyData('11:00 PM', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('12:00 AM', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('1:00 AM', 8, 20, 6, 16));
 
-var theInternationalDistrict =  new PizzaLocation('The-International-District');
+var theInternationalDistrict = new PizzaLocation('The-International-District');
 theInternationalDistrict.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 theInternationalDistrict.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 theInternationalDistrict.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -82,7 +82,7 @@ theInternationalDistrict.pushHourlyData(new HourlyData('11:00 PM', 0, 2, 2, 8));
 theInternationalDistrict.pushHourlyData(new HourlyData('12:00 AM', 0, 2, 2, 8));
 theInternationalDistrict.pushHourlyData(new HourlyData('1:00 AM', 0, 2, 2, 8));
 
-var southLakeUnion =  new PizzaLocation('South-Lake-Union');
+var southLakeUnion = new PizzaLocation('South-Lake-Union');
 southLakeUnion.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 southLakeUnion.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 southLakeUnion.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -102,7 +102,7 @@ southLakeUnion.pushHourlyData(new HourlyData('11:00 PM', 5, 21, 16, 31));
 southLakeUnion.pushHourlyData(new HourlyData('12:00 AM', 5, 21, 16, 31));
 southLakeUnion.pushHourlyData(new HourlyData('1:00 AM', 5, 21, 16, 31));
 
-var georgetown =  new PizzaLocation('Georgetown');
+var georgetown = new PizzaLocation('Georgetown');
 georgetown.pushHourlyData(new HourlyData('8:00 AM', 2, 7, 3, 5));
 georgetown.pushHourlyData(new HourlyData('9:00 AM', 2, 7, 3, 5));
 georgetown.pushHourlyData(new HourlyData('10:00 AM', 2, 7, 3, 5));
@@ -122,7 +122,7 @@ georgetown.pushHourlyData(new HourlyData('11:00 PM', 15, 20, 6, 21));
 georgetown.pushHourlyData(new HourlyData('12:00 AM', 15, 20, 6, 21));
 georgetown.pushHourlyData(new HourlyData('1:00 AM', 15, 20, 6, 21));
 
-var ravenna =  new PizzaLocation('Ravenna');
+var ravenna = new PizzaLocation('Ravenna');
 ravenna.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 ravenna.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 ravenna.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -142,9 +142,7 @@ ravenna.pushHourlyData(new HourlyData('11:00 PM', 2, 4, 3, 11));
 ravenna.pushHourlyData(new HourlyData('12:00 AM', 2, 4, 3, 11));
 ravenna.pushHourlyData(new HourlyData('1:00 AM', 2, 4, 3, 11));
 
-
-
-
+// this function creates a row for the table that will receive the data from the array.
 function genorateDataRow(inputArray){
   var row = document.createElement('tr');
   var col;
@@ -156,7 +154,7 @@ function genorateDataRow(inputArray){
   return row;
 }
 
-// take in an array of strings and create a table row with tr tags
+// This function just creates a head row for each table.
 function genorateHeadingRow(inputArray){
   var row = document.createElement('tr');
   var col;
@@ -168,56 +166,54 @@ function genorateHeadingRow(inputArray){
   return row;
 }
 
-//var header = document.createElement('p');
+// This variable and function adds all the data into the table.  Since it is a function, I can do it over and over again.  I will want to do it for each location.
 var tagTable = document.createElement('table');
 
 function createTable (name) {
-  //header = name;
-// create a row with th tags
-var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
-var secondRow = genorateDataRow([name.hourlyData[0].time, name.hourlyData[0].pizzasSold, name.hourlyData[0].deliveriesMade]);
-var thirdRow = genorateDataRow([name.hourlyData[1].time, name.hourlyData[1].pizzasSold, name.hourlyData[1].deliveriesMade]);
-var fourthRow = genorateDataRow([name.hourlyData[2].time, name.hourlyData[2].pizzasSold, name.hourlyData[2].deliveriesMade]);
-var fifthRow = genorateDataRow([name.hourlyData[3].time, name.hourlyData[3].pizzasSold, name.hourlyData[3].deliveriesMade]);
-var sixthRow = genorateDataRow([name.hourlyData[4].time, name.hourlyData[4].pizzasSold, name.hourlyData[4].deliveriesMade]);
-var seventhRow = genorateDataRow([name.hourlyData[5].time, name.hourlyData[5].pizzasSold, name.hourlyData[5].deliveriesMade]);
-var eigthRow = genorateDataRow([name.hourlyData[6].time, name.hourlyData[6].pizzasSold, name.hourlyData[6].deliveriesMade]);
-var ninthRow = genorateDataRow([name.hourlyData[7].time, name.hourlyData[7].pizzasSold, name.hourlyData[7].deliveriesMade]);
-var tenthRow = genorateDataRow([name.hourlyData[8].time, name.hourlyData[8].pizzasSold, name.hourlyData[8].deliveriesMade]);
-var eleventhRow = genorateDataRow([name.hourlyData[9].time, name.hourlyData[9].pizzasSold, name.hourlyData[9].deliveriesMade]);
-var twelfthRow = genorateDataRow([name.hourlyData[10].time, name.hourlyData[10].pizzasSold, name.hourlyData[10].deliveriesMade]);
-var thirteenthRow = genorateDataRow([name.hourlyData[11].time, name.hourlyData[11].pizzasSold, name.hourlyData[11].deliveriesMade]);
-var fourteenthRow = genorateDataRow([name.hourlyData[12].time, name.hourlyData[12].pizzasSold, name.hourlyData[12].deliveriesMade]);
-var fifteenthRow = genorateDataRow([name.hourlyData[13].time, name.hourlyData[13].pizzasSold, name.hourlyData[13].deliveriesMade]);
-var sixteenthRow = genorateDataRow([name.hourlyData[14].time, name.hourlyData[14].pizzasSold, name.hourlyData[14].deliveriesMade]);
-var seventeenthRow = genorateDataRow([name.hourlyData[15].time, name.hourlyData[15].pizzasSold, name.hourlyData[15].deliveriesMade]);
-var eighteenthRow = genorateDataRow([name.hourlyData[16].time, name.hourlyData[16].pizzasSold, name.hourlyData[16].deliveriesMade]);
-var ninteenthRow = genorateDataRow([name.hourlyData[17].time, name.hourlyData[17].pizzasSold, name.hourlyData[17].deliveriesMade]);
 
-tagTable.appendChild(firstRow);
-tagTable.appendChild(secondRow);
-tagTable.appendChild(thirdRow);
-tagTable.appendChild(fourthRow);
-tagTable.appendChild(fifthRow);
-tagTable.appendChild(sixthRow);
-tagTable.appendChild(seventhRow);
-tagTable.appendChild(eigthRow);
-tagTable.appendChild(ninthRow);
-tagTable.appendChild(tenthRow);
-tagTable.appendChild(eleventhRow);
-tagTable.appendChild(twelfthRow);
-tagTable.appendChild(thirteenthRow);
-tagTable.appendChild(fourteenthRow);
-tagTable.appendChild(fifteenthRow);
-tagTable.appendChild(sixteenthRow);
-tagTable.appendChild(seventeenthRow);
-tagTable.appendChild(eighteenthRow);
-tagTable.appendChild(ninteenthRow);
+  var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
+  var secondRow = genorateDataRow([name.hourlyData[0].time, name.hourlyData[0].pizzasSold, name.hourlyData[0].deliveriesMade]);
+  var thirdRow = genorateDataRow([name.hourlyData[1].time, name.hourlyData[1].pizzasSold, name.hourlyData[1].deliveriesMade]);
+  var fourthRow = genorateDataRow([name.hourlyData[2].time, name.hourlyData[2].pizzasSold, name.hourlyData[2].deliveriesMade]);
+  var fifthRow = genorateDataRow([name.hourlyData[3].time, name.hourlyData[3].pizzasSold, name.hourlyData[3].deliveriesMade]);
+  var sixthRow = genorateDataRow([name.hourlyData[4].time, name.hourlyData[4].pizzasSold, name.hourlyData[4].deliveriesMade]);
+  var seventhRow = genorateDataRow([name.hourlyData[5].time, name.hourlyData[5].pizzasSold, name.hourlyData[5].deliveriesMade]);
+  var eigthRow = genorateDataRow([name.hourlyData[6].time, name.hourlyData[6].pizzasSold, name.hourlyData[6].deliveriesMade]);
+  var ninthRow = genorateDataRow([name.hourlyData[7].time, name.hourlyData[7].pizzasSold, name.hourlyData[7].deliveriesMade]);
+  var tenthRow = genorateDataRow([name.hourlyData[8].time, name.hourlyData[8].pizzasSold, name.hourlyData[8].deliveriesMade]);
+  var eleventhRow = genorateDataRow([name.hourlyData[9].time, name.hourlyData[9].pizzasSold, name.hourlyData[9].deliveriesMade]);
+  var twelfthRow = genorateDataRow([name.hourlyData[10].time, name.hourlyData[10].pizzasSold, name.hourlyData[10].deliveriesMade]);
+  var thirteenthRow = genorateDataRow([name.hourlyData[11].time, name.hourlyData[11].pizzasSold, name.hourlyData[11].deliveriesMade]);
+  var fourteenthRow = genorateDataRow([name.hourlyData[12].time, name.hourlyData[12].pizzasSold, name.hourlyData[12].deliveriesMade]);
+  var fifteenthRow = genorateDataRow([name.hourlyData[13].time, name.hourlyData[13].pizzasSold, name.hourlyData[13].deliveriesMade]);
+  var sixteenthRow = genorateDataRow([name.hourlyData[14].time, name.hourlyData[14].pizzasSold, name.hourlyData[14].deliveriesMade]);
+  var seventeenthRow = genorateDataRow([name.hourlyData[15].time, name.hourlyData[15].pizzasSold, name.hourlyData[15].deliveriesMade]);
+  var eighteenthRow = genorateDataRow([name.hourlyData[16].time, name.hourlyData[16].pizzasSold, name.hourlyData[16].deliveriesMade]);
+  var ninteenthRow = genorateDataRow([name.hourlyData[17].time, name.hourlyData[17].pizzasSold, name.hourlyData[17].deliveriesMade]);
 
-
+  tagTable.appendChild(firstRow);
+  tagTable.appendChild(secondRow);
+  tagTable.appendChild(thirdRow);
+  tagTable.appendChild(fourthRow);
+  tagTable.appendChild(fifthRow);
+  tagTable.appendChild(sixthRow);
+  tagTable.appendChild(seventhRow);
+  tagTable.appendChild(eigthRow);
+  tagTable.appendChild(ninthRow);
+  tagTable.appendChild(tenthRow);
+  tagTable.appendChild(eleventhRow);
+  tagTable.appendChild(twelfthRow);
+  tagTable.appendChild(thirteenthRow);
+  tagTable.appendChild(fourteenthRow);
+  tagTable.appendChild(fifteenthRow);
+  tagTable.appendChild(sixteenthRow);
+  tagTable.appendChild(seventeenthRow);
+  tagTable.appendChild(eighteenthRow);
+  tagTable.appendChild(ninteenthRow);
 
   //document.getElementById('ballard').appendChild(tagTable);
 }
+//This is where I call the function for each location to create the actual tables.
 createTable(ballard);
 document.getElementById('ballard').appendChild(tagTable);
 createTable(firstHill);
