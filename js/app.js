@@ -1,3 +1,90 @@
+'use strict';
+
+function collectPizzaInfo(event){
+
+  event.preventDefault();
+
+  var pizzaDataTable = document.getElementById('pizza-location-table');
+  //console.log('Do the button clicks register?');
+
+  var pizzaTime = event.target.pizzatime.value;
+  //console.log('pizzatime', pizzaTime);
+
+  var pizzaSales = parseInt(event.target.pizzasales.value);
+  //console.log('pizzasales', pizzaSales);
+
+  var pizzaDeliveries = parseInt(event.target.pizzadeliveries.value);
+  //console.log('pizzadeliveries', pizzaDeliveries);
+
+  var pizzaRow = document.createElement('tr');
+
+  var timeColumn = document.createElement('td');
+  timeColumn.textContent = pizzaTime;
+  pizzaRow.appendChild(timeColumn);
+
+  var salesColumn = document.createElement('td');
+  salesColumn.textContent = pizzaSales;
+  pizzaRow.appendChild(salesColumn);
+
+  var deliveriesColumn = document.createElement('td');
+  deliveriesColumn.textContent = pizzaDeliveries;
+  pizzaRow.appendChild(deliveriesColumn);
+
+  pizzaDataTable.appendChild(pizzaRow);
+
+//Neec to return createTable();.
+
+}
+
+var createPizzaForm = document.getElementById('pizza-location-form');
+
+createPizzaForm.addEventListener('submit', collectPizzaInfo);
+
+//This is the one I will need to do for real.
+
+// function collectNewPizzaInfo(event){
+//
+//   event.preventDefault();
+//
+//   var pizzaDataTable = document.getElementById('new-pizza-location-table');
+//   //console.log('Do the button clicks register?');
+//
+//   var pizzaTime = event.target.newpizzatime.value;
+//   //console.log('pizzatime', pizzaTime);
+//
+//   var minPizzaSales = parseInt(event.target.minpizzasales.value);
+//   //console.log('pizzasales', pizzaSales);
+//
+//   var maxPizzaSales = parseInt(event.target.minpizzasales.value);
+//   //console.log('pizzasales', pizzaSales);
+//
+//   var minPizzaDeliveries = parseInt(event.target.minpizzadeliveries.value);
+//   //console.log('pizzadeliveries', pizzaDeliveries);
+//
+//   var pizzaRow = document.createElement('tr');
+//
+//   var timeColumn = document.createElement('td');
+//   timeColumn.textContent = pizzaTime;
+//   pizzaRow.appendChild(timeColumn);
+//
+//   var salesColumn = document.createElement('td');
+//   salesColumn.textContent = minPizzaSales;//This will need to be calculated with random.
+//   pizzaRow.appendChild(salesColumn);
+//
+//   var deliveriesColumn = document.createElement('td');
+//   deliveriesColumn.textContent = minPizzaDeliveries;//This will need to be calculated with random
+//   pizzaRow.appendChild(deliveriesColumn);
+//
+//   pizzaDataTable.appendChild(pizzaRow);
+//
+// //Neec to return createTable();.
+//
+// }
+//
+// var createPizzaForm = document.getElementById('new-pizza-location-form');
+//
+// createPizzaForm.addEventListener('submit', collectNewPizzaInfo);
+
 // Random math function to generate the random numbers.
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -165,12 +252,19 @@ function genorateHeadingRow(inputArray){
   }
   return row;
 }
+//To create a header for each table.
+function generateAHeader(name){
+  var header = document.createElement('h1');
+  header.textContent = name;
+
+}
 
 // This variable and function adds all the data into the table.  Since it is a function, I can do it over and over again.  I will want to do it for each location.
 var tagTable = document.createElement('table');
 
 function createTable (name) {
 
+  generateAHeader(name);
   var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
   var secondRow = genorateDataRow([name.hourlyData[0].time, name.hourlyData[0].pizzasSold, name.hourlyData[0].deliveriesMade]);
   var thirdRow = genorateDataRow([name.hourlyData[1].time, name.hourlyData[1].pizzasSold, name.hourlyData[1].deliveriesMade]);
