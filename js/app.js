@@ -26,8 +26,16 @@ function collectNewPizzaInfo(event){
   var storeObject = new PizzaLocation(pizzaStoreNewName);
   storeObject.pushHourlyData(new HourlyData(pizzaTime, minPizzaSales, maxPizzaSales, minPizzaDeliveries, maxPizzaDeliveries));
 
-  createTable(storeObject);
+  var storeTitle = document.getElementById('storenamegoeshere');
+  storeTitle.textContent = pizzaStoreNewName;
 
+  function createTableFromForm(name) {
+
+    for (var i = 0; i < storeObject.hourlyData.length; i++) {
+      var theRow = genorateDataRow([name.hourlyData[i].time, name.hourlyData[i].pizzasSold, name.hourlyData[i].deliveriesMade]);
+      pizzaDataTable.appendChild(theRow); }
+  }
+  createTableFromForm(storeObject);
 }
 
 var createPizzaForm = document.getElementById('new-pizza-location-form');
@@ -201,37 +209,31 @@ function genorateHeadingRow(inputArray){
   }
   return row;
 }
-//To create a header for each table.
-function generateAHeader(name){
-  var header = document.createElement('h1');
-  header.textContent = name;
-
-}
 
 // This variable and function adds all the data into the table.  Since it is a function, I can do it over and over again.  I will want to do it for each location.
 var tagTable = document.createElement('table');
 
 function createTable (name) {
 
-  generateAHeader(name);
   var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
   tagTable.appendChild(firstRow);
 
   for (var i = 0; i < name.hourlyData.length; i++) {
     var theRow = genorateDataRow([name.hourlyData[i].time, name.hourlyData[i].pizzasSold, name.hourlyData[i].deliveriesMade]);
     tagTable.appendChild(theRow); }
+
 }
 
 //This is where I call the function for each location to create the actual tables.
 createTable(ballard);
-//document.getElementById('ballard').appendChild(tagTable);
+document.getElementById('ballard').appendChild(tagTable);
 createTable(firstHill);
-//document.getElementById('firstHill').appendChild(tagTable);
+document.getElementById('firstHill').appendChild(tagTable);
 createTable(theInternationalDistrict);
-//document.getElementById('theInternationalDistrict').appendChild(tagTable);
+document.getElementById('theInternationalDistrict').appendChild(tagTable);
 createTable(southLakeUnion);
-//document.getElementById('southLakeUnion').appendChild(tagTable);
+document.getElementById('southLakeUnion').appendChild(tagTable);
 createTable(georgetown);
-//document.getElementById('georgetown').appendChild(tagTable);
+document.getElementById('georgetown').appendChild(tagTable);
 createTable(ravenna);
 document.getElementById('ravenna').appendChild(tagTable);

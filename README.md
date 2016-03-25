@@ -1,8 +1,4 @@
 # pizza-odyssey
-Lab Project for Wednesday March 23rd
+Lab Project for Thursday March 24th
 
-The goal was to put info from the pizza store we created yesterday into tables, as opposed to the lists we used yesterday.
-
-Instead of starting with my code from yesterday, I decided to start with the example code from the lectures as my template.  I made comments in the code to try and show that I know what each part is doing, as a few parts I did not have to change at all after copying and pasting from the example.
-
-I was able to get everything to appear correctly on the page except for the headers.  I am guessing this is because of something with the html tags, which I will need to explore further.
+The goal was to create a form which would take in data on a new pizza location and output it to a table, while using the object constructor we developed yesterday.
