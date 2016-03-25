@@ -211,29 +211,37 @@ function genorateHeadingRow(inputArray){
 }
 
 // This variable and function adds all the data into the table.  Since it is a function, I can do it over and over again.  I will want to do it for each location.
-var tagTable = document.createElement('table');
 
-function createTable (name) {
-
+function createTable (location) {
+  var tagTable = document.createElement('table');
+  tagTable.setAttribute('id', location.name);
   var firstRow = genorateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made']);
   tagTable.appendChild(firstRow);
 
-  for (var i = 0; i < name.hourlyData.length; i++) {
-    var theRow = genorateDataRow([name.hourlyData[i].time, name.hourlyData[i].pizzasSold, name.hourlyData[i].deliveriesMade]);
+  for (var i = 0; i < location.hourlyData.length; i++) {
+    var theRow = genorateDataRow([location.hourlyData[i].time, location.hourlyData[i].pizzasSold, location.hourlyData[i].deliveriesMade]);
     tagTable.appendChild(theRow); }
+  return tagTable;
+}
 
+function createHeader (location) {
+  var locationHeading = document.createElement('h1');
+  locationHeading.textContent = location.name;
+  return locationHeading;
 }
 
 //This is where I call the function for each location to create the actual tables.
-createTable(ballard);
-document.getElementById('ballard').appendChild(tagTable);
-createTable(firstHill);
-document.getElementById('firstHill').appendChild(tagTable);
-createTable(theInternationalDistrict);
-document.getElementById('theInternationalDistrict').appendChild(tagTable);
-createTable(southLakeUnion);
-document.getElementById('southLakeUnion').appendChild(tagTable);
-createTable(georgetown);
-document.getElementById('georgetown').appendChild(tagTable);
-createTable(ravenna);
-document.getElementById('ravenna').appendChild(tagTable);
+
+function renderStoreToPage (location){
+  var locationHeading = createHeader(location);
+  var locationTable = createTable(location);
+  document.getElementById('all-store-data').appendChild(locationHeading);
+  document.getElementById('all-store-data').appendChild(locationTable);
+}
+
+renderStoreToPage(ballard);
+renderStoreToPage(firstHill);
+renderStoreToPage(theInternationalDistrict);
+renderStoreToPage(southLakeUnion);
+renderStoreToPage(georgetown);
+renderStoreToPage(ravenna);
