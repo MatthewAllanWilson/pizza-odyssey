@@ -1,10 +1,16 @@
 'use strict';
 
+function addToExistingTable(location) {
+  for (var i = 0; i < location.hourlyData.length; i++) {
+    var theRow = genorateDataRow([location.hourlyData[i].time, location.hourlyData[i].pizzasSold, location.hourlyData[i].deliveriesMade]);
+    document.getElementById(location.name).appendChild(theRow); }
+}
+
 function collectNewPizzaInfo(event){
 
   event.preventDefault();
 
-  var pizzaDataTable = document.getElementById('new-pizza-location-table');
+  var pizzaDataTable = document.getElementById('add-store-data');
   //console.log('Do the button clicks register?');
 
   var pizzaStoreNewName = event.target.newpizzastorename.value;
@@ -26,16 +32,11 @@ function collectNewPizzaInfo(event){
   var storeObject = new PizzaLocation(pizzaStoreNewName);
   storeObject.pushHourlyData(new HourlyData(pizzaTime, minPizzaSales, maxPizzaSales, minPizzaDeliveries, maxPizzaDeliveries));
 
-  var storeTitle = document.getElementById('storenamegoeshere');
-  storeTitle.textContent = pizzaStoreNewName;
-
-  function createTableFromForm(name) {
-
-    for (var i = 0; i < storeObject.hourlyData.length; i++) {
-      var theRow = genorateDataRow([name.hourlyData[i].time, name.hourlyData[i].pizzasSold, name.hourlyData[i].deliveriesMade]);
-      pizzaDataTable.appendChild(theRow); }
+  if (document.getElementById(pizzaStoreNewName)) {
+    addToExistingTable(storeObject);
+  } else {
+    renderStoreToPage(storeObject);
   }
-  createTableFromForm(storeObject);
 }
 
 var createPizzaForm = document.getElementById('new-pizza-location-form');
