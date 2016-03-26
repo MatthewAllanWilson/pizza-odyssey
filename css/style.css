@@ -1,0 +1,52 @@
+table, thead, th, td {
+   border: 1px solid black;
+}
+
+body {
+background-color: #FCFFF5;
+font-family: 'Lora', serif;
+font-size: 110%;
+}
+
+header {
+  margin: 20px;
+  justify-content: center;
+}
+
+img{
+  max-width: 500px;
+  border-radius: 10px;
+  margin-left: 20px;
+  justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+li {
+  padding: 40px;
+}
+
+.many-locations {
+  margin-left: 20px;
+}
+
+.stores-row-one {
+  background-color: #D1DBBD;
+  display: flex;
+  justify-content: center;
+}
+
+.stores-row-two {
+background-color: #91AA9D;
+display: flex;
+justify-content: center;
+}
+
+.Trump {
+  margin-left: 20px;
+}

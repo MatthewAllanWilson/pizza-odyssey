@@ -10,23 +10,11 @@ function collectNewPizzaInfo(event){
 
   event.preventDefault();
 
-  var pizzaDataTable = document.getElementById('add-store-data');
-  //console.log('Do the button clicks register?');
-
   var pizzaStoreNewName = event.target.newpizzastorename.value;
-
   var pizzaTime = event.target.newpizzatime.value;
-  //console.log('pizzatime', pizzaTime);
-
   var minPizzaSales = parseInt(event.target.minpizzasales.value);
-  //console.log('pizzasales', pizzaSales);
-
   var maxPizzaSales = parseInt(event.target.minpizzasales.value);
-  //console.log('pizzasales', pizzaSales);
-
   var minPizzaDeliveries = parseInt(event.target.minpizzadeliveries.value);
-  //console.log('pizzadeliveries', pizzaDeliveries);
-
   var maxPizzaDeliveries = parseInt(event.target.maxpizzadeliveries.value);
 
   var storeObject = new PizzaLocation(pizzaStoreNewName);
@@ -67,7 +55,7 @@ function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDe
 }
 
 // Making a new PizzaLocation for each store.  Passing in the min/max values from the chart provided in the instructions.
-var ballard = new PizzaLocation('ballard');
+var ballard = new PizzaLocation('Ballard');
 ballard.pushHourlyData(new HourlyData('8:00 AM', 0, 3, 1, 7));
 ballard.pushHourlyData(new HourlyData('9:00 AM', 0, 3, 1, 7));
 ballard.pushHourlyData(new HourlyData('10:00 AM', 0, 3, 1, 7));
@@ -87,7 +75,7 @@ ballard.pushHourlyData(new HourlyData('11:00 PM', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('12:00 AM', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('1:00 AM', 8, 15, 6, 16));
 
-var firstHill = new PizzaLocation('firstHill');
+var firstHill = new PizzaLocation('First Hill');
 firstHill.pushHourlyData(new HourlyData('8:00 AM', 1, 3, 1, 7));
 firstHill.pushHourlyData(new HourlyData('9:00 AM', 1, 3, 1, 7));
 firstHill.pushHourlyData(new HourlyData('10:00 AM', 1, 3, 1, 7));
@@ -107,7 +95,7 @@ firstHill.pushHourlyData(new HourlyData('11:00 PM', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('12:00 AM', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('1:00 AM', 8, 20, 6, 16));
 
-var theInternationalDistrict = new PizzaLocation('theInternationalDistrict');
+var theInternationalDistrict = new PizzaLocation('The International District');
 theInternationalDistrict.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 theInternationalDistrict.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 theInternationalDistrict.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -127,7 +115,7 @@ theInternationalDistrict.pushHourlyData(new HourlyData('11:00 PM', 0, 2, 2, 8));
 theInternationalDistrict.pushHourlyData(new HourlyData('12:00 AM', 0, 2, 2, 8));
 theInternationalDistrict.pushHourlyData(new HourlyData('1:00 AM', 0, 2, 2, 8));
 
-var southLakeUnion = new PizzaLocation('southLakeUnion');
+var southLakeUnion = new PizzaLocation('South Lake Union');
 southLakeUnion.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 southLakeUnion.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 southLakeUnion.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -147,7 +135,7 @@ southLakeUnion.pushHourlyData(new HourlyData('11:00 PM', 5, 21, 16, 31));
 southLakeUnion.pushHourlyData(new HourlyData('12:00 AM', 5, 21, 16, 31));
 southLakeUnion.pushHourlyData(new HourlyData('1:00 AM', 5, 21, 16, 31));
 
-var georgetown = new PizzaLocation('georgetown');
+var georgetown = new PizzaLocation('Georgetown');
 georgetown.pushHourlyData(new HourlyData('8:00 AM', 2, 7, 3, 5));
 georgetown.pushHourlyData(new HourlyData('9:00 AM', 2, 7, 3, 5));
 georgetown.pushHourlyData(new HourlyData('10:00 AM', 2, 7, 3, 5));
@@ -167,7 +155,7 @@ georgetown.pushHourlyData(new HourlyData('11:00 PM', 15, 20, 6, 21));
 georgetown.pushHourlyData(new HourlyData('12:00 AM', 15, 20, 6, 21));
 georgetown.pushHourlyData(new HourlyData('1:00 AM', 15, 20, 6, 21));
 
-var ravenna = new PizzaLocation('ravenna');
+var ravenna = new PizzaLocation('Ravenna');
 ravenna.pushHourlyData(new HourlyData('8:00 AM', 0, 4, 0, 4));
 ravenna.pushHourlyData(new HourlyData('9:00 AM', 0, 4, 0, 4));
 ravenna.pushHourlyData(new HourlyData('10:00 AM', 0, 4, 0, 4));
@@ -212,7 +200,6 @@ function genorateHeadingRow(inputArray){
 }
 
 // This variable and function adds all the data into the table.  Since it is a function, I can do it over and over again.  I will want to do it for each location.
-
 function createTable (location) {
   var tagTable = document.createElement('table');
   tagTable.setAttribute('id', location.name);
@@ -221,7 +208,9 @@ function createTable (location) {
 
   for (var i = 0; i < location.hourlyData.length; i++) {
     var theRow = genorateDataRow([location.hourlyData[i].time, location.hourlyData[i].pizzasSold, location.hourlyData[i].deliveriesMade]);
-    tagTable.appendChild(theRow); }
+    tagTable.appendChild(theRow);
+  }
+
   return tagTable;
 }
 
@@ -231,8 +220,6 @@ function createHeader (location) {
   return locationHeading;
 }
 
-//This is where I call the function for each location to create the actual tables.
-
 function renderStoreToPage (location){
   var locationHeading = createHeader(location);
   var locationTable = createTable(location);
@@ -240,6 +227,7 @@ function renderStoreToPage (location){
   document.getElementById('all-store-data').appendChild(locationTable);
 }
 
+//This is where I call the function for each location to create the actual tables.
 renderStoreToPage(ballard);
 renderStoreToPage(firstHill);
 renderStoreToPage(theInternationalDistrict);

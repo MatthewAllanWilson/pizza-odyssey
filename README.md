@@ -1,4 +1,4 @@
 # pizza-odyssey
-Lab Project for Thursday March 24th
+Lab Project for Friday March 25th
 
-The goal was to create a form which would take in data on a new pizza location and output it to a table, while using the object constructor we developed yesterday.
+The goal was to finish the pizza store sales page, and create a customer-facing page that utilizes CSS.
