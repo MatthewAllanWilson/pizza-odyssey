@@ -1,2 +1,4 @@
 # pizza-odyssey
-Lab Project Starting Tuesday March 22nd
+Lab Project for Friday March 25th
+
+The goal was to finish the pizza store sales page, and create a customer-facing page that utilizes CSS.

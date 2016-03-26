@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizza Sales</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"></link>
+  </head>
+  <body>
+<h1>Pizza 3001 Sales</h1>
+
+<a href="index.html">Public-Facing Home Page</a>
+
+
+    <section>
+      <h1>Add a New Store:</h1>
+      <form id="new-pizza-location-form">
+        <fieldset>
+          <legend>Enter the Info Here</legend>
+
+          <label name="newpizzastorename">Name: </label>
+          <input name="newpizzastorename" type="text">
+
+          <label name="newpizzatime">Time: </label>
+          <input name="newpizzatime" type="text">
+
+          <label name="minpizzasales">Min Pizzas Sold: </label>
+          <input name="minpizzasales" type="text">
+
+          <label name="maxpizzasales">Max Pizzas Sold: </label>
+          <input name="maxpizzasales" type="text">
+
+          <label name="minpizzadeliveries">Min Pizzas Delivered: </label>
+          <input name="minpizzadeliveries" type="text">
+
+          <label name="maxpizzadeliveries">Max Pizzas Delivered: </label>
+          <input name="maxpizzadeliveries" type="text">
+
+          <button type="submit">Add This Data to Table</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="all-store-data">
+      <h1>Current Stores:</h1>
+    </section>
+
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
